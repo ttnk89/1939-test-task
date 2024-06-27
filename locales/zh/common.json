@@ -1,0 +1,17 @@
+{
+    "welcome": "欢迎",
+    "login": "登录",
+    "home": "ZH_Home",
+    "username": "用户名",
+    "password": "密码",
+    "playerName": "玩家姓名",
+    "changePlayerName": "更改玩家姓名",
+    "language": "语言",
+    "loginFailed": "登录失败，请检查您的凭据。",
+    "nameChangeFailed": "由于名称不适当，名称更改失败。",
+    "genericError": "An error occurred. Please try again.",
+    "submit": "提交",
+    "error": "{{error}}",
+    "login-page-title": "ZH_Login page",
+    "login-page-description": "ZH_A simple login app with Next.js"
+  }

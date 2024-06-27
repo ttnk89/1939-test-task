@@ -7,107 +7,76 @@
   min-height: 100vh;
 }
 
-.description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
-  max-width: var(--max-width);
+.header {
+  position:relative;
+  left:0px;
+  top:0px;
+  z-index:1;
+  width:100%;
+  background-color:#3f5c99;
+  width:100%;
+  float:left;
+
+}
+
+.header ul {
+  display: table;
+  margin: 0;
+  padding: 0;
   width: 100%;
-  z-index: 2;
-  font-family: var(--font-mono);
 }
 
-.description a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
 
-.description p {
-  position: relative;
-  margin: 0;
-  padding: 1rem;
-  background-color: rgba(var(--callout-rgb), 0.5);
-  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-  border-radius: var(--border-radius);
-}
-
-.code {
-  font-weight: 700;
-  font-family: var(--font-mono);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(25%, auto));
-  max-width: 100%;
-  width: var(--max-width);
-}
-
-.card {
-  padding: 1rem 1.2rem;
-  border-radius: var(--border-radius);
-  background: rgba(var(--card-rgb), 0);
-  border: 1px solid rgba(var(--card-border-rgb), 0);
-  transition: background 200ms, border 200ms;
-}
-
-.card span {
+.header a {
+  color: #ffffff;
   display: inline-block;
-  transition: transform 200ms;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-.card h2 {
-  font-weight: 600;
-  margin-bottom: 0.7rem;
-}
-
-.card p {
-  margin: 0;
-  opacity: 0.6;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  max-width: 30ch;
-  text-wrap: balance;
-}
-
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.header li {
+  display: table-cell;
+  padding: 5px 0;
   position: relative;
-  padding: 4rem 0;
+  text-align: center;
+  vertical-align: middle;
+  width: 20%;
 }
 
-.center::before {
-  background: var(--secondary-glow);
-  border-radius: 50%;
-  width: 480px;
-  height: 360px;
-  margin-left: -400px;
-}
-
-.center::after {
-  background: var(--primary-glow);
-  width: 240px;
-  height: 180px;
-  z-index: -1;
-}
-
-.center::before,
-.center::after {
+.header li:after {
+  border-left: 1px solid #2f477a;
   content: "";
-  left: 50%;
+  height: 20px;
   position: absolute;
-  filter: blur(45px);
-  transform: translateZ(0);
+  right: 0;
+  top: 8px;
 }
 
-.logo {
-  position: relative;
+.button {
+  background:none;
+  border:none;
+  font-family: '__Inter_aaf875', '__Inter_Fallback_aaf875';
+  font-style: normal;
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  text-transform: uppercase;
 }
+.button:disabled  {
+  background-color: #2f477a;
+}
+
+/* On mouse-over */
+.button:hover:enabled {cursor: pointer; background-color: #2f477a;}
+
+@media (min-width: 640px) {
+  .header {
+    padding-left: 1.5rem; /* sm:px-6 translates to 1.5rem left and right padding on small screens and above */
+    padding-right: 1.5rem;
+  }
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
