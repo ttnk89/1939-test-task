@@ -3,44 +3,49 @@
 import styles from "../page.module.css";
 import useTranslation from "next-translate/useTranslation";
 import getT from "next-translate/getT"
-import { useState } from "react";
-import LoginForm from "../components/LoginComponent";
-import PlayerName from "../components/PlayerNameComponent";
+import { useEffect, useState } from "react";
+import LoginForm from "../../components/login";
+import PlayerName from "../../components/PlayerNameComponent";
 import { Metadata, ResolvingMetadata } from "next";
-
-type Props = {
-    params: { lang: string }
-    searchParams: { [key: string]: string | string[] | undefined }
-  }
-
-export async function generateMetadata({ params, searchParams }: Props, parent: ResolvingMetadata): Promise<Metadata> {
-    const t = await getT(params.lang, "common")
-
-    return {
-        title: t`login-page-title`,
-        description: t`login-page-description`,
-    };
-}
+import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/contexts/authcontext";
 
 export default function Page() {
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [playerName, setPlayerName] = useState('');
+    const t = useTranslations('common');
+    // const { loggedIn, playerName, login, logout } = useAuth();
+    const [newPlayerName, setNewPlayerName] = useState('');
+    const router = useRouter();
     
-    const handleLogin = (name: string) => {
-        setLoggedIn(true);
-        setPlayerName(name);
-    };
+    // const handleLogin = async (name: string) => {
+    //     login(name);
+
+    //     // Save player name to the backend
+    //     await fetch('/api/player', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify({ newName: name }),
+    //     });
+
+    //     router.push('/');
+    // };
 
     const handleChangePlayerName = (newName: string) => {
-        setPlayerName(newName);
+        setNewPlayerName(newName);
+        localStorage.setItem('username', newName);
     };
+
+    // useEffect(() => {
+    //     if (loggedIn) {
+    //         router.push('/');
+    //     }
+    // }, [loggedIn, router]);
+
     return (
         <main className={styles.main}>
-            {!loggedIn ? (
-                    <LoginForm onLogin={handleLogin} />
-                ) : (
-                    <PlayerName playerName={playerName} onChangePlayerName={handleChangePlayerName} />
-                )}
+            <LoginForm />
         </main>
     );
 }

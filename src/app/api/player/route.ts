@@ -11,13 +11,13 @@ async function readBadWords() {
   return badWords;
 }
 
-let playerName = 'JohnnyBadName'
+let username = 'player_name'
 
 export async function GET() {
   try {
     const data = await fs.readFile(playerFilePath, 'utf8');
-    const { playerName } = JSON.parse(data);
-    return NextResponse.json({ playerName });
+    const { username, password } = JSON.parse(data);
+    return NextResponse.json({ username, password });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to read player data' }, { status: 500 });
   }
@@ -37,10 +37,10 @@ export async function POST(req: Request) {
       return NextResponse.json({ status: 'name_change_failed', message: 'Inappropriate name.' }, { status: 400 });
     }
 
-    const data = { playerName: newName };
+    const data = { username: newName };
     await fs.writeFile(playerFilePath, JSON.stringify(data, null, 2), 'utf8');
 
-    return NextResponse.json({ status: 'name_change_ok', playerName: newName });
+    return NextResponse.json({ status: 'name_change_ok', username: newName });
   } catch (error) {
     return NextResponse.json({ status: 'name_change_failed', message: 'Failed to change name.' }, { status: 500 });
   }

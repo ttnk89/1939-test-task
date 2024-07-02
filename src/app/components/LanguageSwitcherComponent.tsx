@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "../page.module.css";
+import styles from "../[locale]/page.module.css";
 import useTranslation from 'next-translate/useTranslation';
 
 import setLanguage from 'next-translate/setLanguage'
@@ -13,7 +13,7 @@ import {
   usePathname,
   useRouter,
   type Locale,
-} from "../../../../i18n.config";
+} from "../../../i18n.config";
 
 export default function LanguageSwitcher({
   locale,

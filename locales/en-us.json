@@ -12,8 +12,9 @@
     "nameChangeFailed": "Name change failed due to inappropriate name.",
     "genericError": "An error occurred. Please try again.",
     "submit": "Submit",
-    "error": "{{error}}",
+    "error": "{error}",
     "login-page-title": "Login page",
-    "login-page-description": "A simple login app with Next.js"
+    "login-page-description": "A simple login app with Next.js",
+    "profile": "Profile"
   }
 }

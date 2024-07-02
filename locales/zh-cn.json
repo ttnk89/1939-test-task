@@ -12,7 +12,7 @@
     "nameChangeFailed": "由于名称不适当，名称更改失败。",
     "genericError": "An error occurred. Please try again.",
     "submit": "提交",
-    "error": "{{error}}",
+    "error": "{error}",
     "login-page-title": "ZH_Login page",
     "login-page-description": "ZH_A simple login app with Next.js"
   }

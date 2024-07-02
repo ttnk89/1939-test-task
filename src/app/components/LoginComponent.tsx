@@ -1,14 +1,14 @@
 'use client';
 
 import { useState, FormEvent, useEffect } from 'react';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslations } from 'next-intl';
 
 interface LoginFormProps {
   onLogin: (name: string) => void;
 }
 
 export default function LoginForm({ onLogin }: LoginFormProps) {
-  const { t, lang } = useTranslation('common');
+  const t = useTranslations('common');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorKey, setErrorKey] = useState<string | null>(null);
