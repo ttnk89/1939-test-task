@@ -1,11 +1,9 @@
-'use server'
-
 import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
 import bcrypt from 'bcryptjs';
-import { User } from './src/app/lib/definitions';
+import { User } from './app/lib/definitions';
 import { useTranslations } from 'next-intl';
  
 async function getUser(username: string, password: string): Promise<User | undefined> {
@@ -40,7 +38,7 @@ async function getUser(username: string, password: string): Promise<User | undef
     }
 }
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
@@ -53,7 +51,7 @@ export const { auth, signIn, signOut } = NextAuth({
             const { username, password } = parsedCredentials.data;
             const user = await getUser(username, password);
         if (!user) return null;
-           //user.password would be hashed in practice
+           //user.password would be returned as hashed in practice
            const hashedPassword = await bcrypt.hash(user.password, 10);
            const passwordsMatch = await bcrypt.compare(password, hashedPassword);
 

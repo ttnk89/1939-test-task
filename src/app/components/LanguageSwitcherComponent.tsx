@@ -25,12 +25,6 @@ export default function LanguageSwitcher({
   const searchParams = useSearchParams();
   const router = useRouter();
 
-
-  // const changeLanguage = (language: string) => {
-  //   const params = new URLSearchParams(Array.from(searchParams.entries()));
-  //   params.set('lang', language);
-  //   router.push(`${pathname}?${params.toString()}`);
-  // };
   const changeLocale = (
     locale: string,
   ) => {

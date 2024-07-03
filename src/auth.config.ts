@@ -1,5 +1,5 @@
 import type { NextAuthConfig } from 'next-auth';
-import { Locale } from './i18n.config';
+import { Locale } from '../i18n.config';
 import { useLocale } from 'next-intl';
  
 export const authConfig = {
@@ -9,13 +9,12 @@ export const authConfig = {
     callbacks: {
         authorized({ auth, request: { nextUrl } }) {
           const isLoggedIn = !!auth?.user;
-          const locale = useLocale() as Locale;
-          const isOnDashboard = nextUrl.pathname.startsWith(`/${locale}/profile`);
+          const isOnDashboard = nextUrl.pathname.includes(`/profile`);
           if (isOnDashboard) {
             if (isLoggedIn) return true;
             return false; // Redirect unauthenticated users to login page
           } else if (isLoggedIn) {
-            return Response.redirect(new URL(`${locale}/profile`, nextUrl));
+            return Response.redirect(new URL(`/profile`, nextUrl));
           }
           return true;
         },

@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { getSession } from 'next-auth/react';
+import { auth } from '@/auth';
 
 const playerFilePath = path.join(process.cwd(), 'data/playerData.json');
 const badWordsFilePath = path.join(process.cwd(), 'data/badWords.json');
