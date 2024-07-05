@@ -42,7 +42,7 @@ export async function POST(req: Request) {
     const badWords = await readBadWords();
 
     //check username length
-    if (username.length < 3 || username.length > 20) {
+    if (username.length < 4 || username.length > 20) {
       return NextResponse.json({ status: 'name_change_failed', message: 'nameTooLong' }, { status: 400 });
     }
 

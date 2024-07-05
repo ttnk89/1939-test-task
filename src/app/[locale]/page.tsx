@@ -6,7 +6,6 @@ interface HomeProps {
 }
 export default function Page({session}: HomeProps) {
   const t = useTranslations('common');
-  console.log(session);
   return (
     <main className={styles.main}>
       <h1>{t('welcome')}</h1>

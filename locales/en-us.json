@@ -29,7 +29,7 @@
       "playerNotFound": "Failed to read player data",
       "playerNameFetchFailed": "Failed to fetch player name: ",
       "invalidName": "Invalid name.",
-      "nameTooLong": "Username must be between 3 and 20 characters.",
+      "nameTooLong": "Username must be between 4 and 20 characters.",
       "invalidCharacters": "Username contains invalid characters.",
       "userExists": "Username already exists.",
       "nameChangeFailed": "Failed to change name."

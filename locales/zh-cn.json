@@ -29,7 +29,7 @@
       "playerNotFound": "读取玩家数据失败",
       "playerNameFetchFailed": "获取玩家名称失败：",
       "invalidName": "名称无效。",
-      "nameTooLong": "用户名必须在3到20个字符之间。",
+      "nameTooLong": "用户名必须在4到20个字符之间。",
       "invalidCharacters": "用户名包含无效字符。",
       "userExists": "用户名已存在。",
       "nameChangeFailed": "更改名称失败。"

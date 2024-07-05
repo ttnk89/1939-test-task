@@ -29,7 +29,7 @@
         "playerNotFound": "プレイヤーデータの読み取りに失敗しました",
         "playerNameFetchFailed": "プレイヤー名の取得に失敗しました：",
         "invalidName": "無効な名前です。",
-        "nameTooLong": "ユーザー名は3〜20文字でなければなりません。",
+        "nameTooLong": "ユーザー名は4〜20文字でなければなりません。",
         "invalidCharacters": "ユーザー名に無効な文字が含まれています。",
         "userExists": "ユーザー名は既に存在します。",
         "nameChangeFailed": "名前の変更に失敗しました。"

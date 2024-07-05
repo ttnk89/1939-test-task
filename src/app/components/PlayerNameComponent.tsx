@@ -20,7 +20,7 @@ export default function PlayerNameChange({ onPlayerNameChange }: { onPlayerNameC
         headers: {
           'Content-Type': 'application/json',
         },
-        //id should be passed from session.user.id
+        //id should be passed from session.user.id in actuality
         body: JSON.stringify({ username: newPlayerName, id: 1 }),
       });
 
