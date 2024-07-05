@@ -25,9 +25,9 @@ async function getUser(username: string, password: string): Promise<User | undef
         const loginData = await loginResponse.json();
 
         if (loginData.status === 'login_ok') {
-            const playerResponse = await fetch(`${baseUrl}/api/player`);
-            const playerData = await playerResponse.json();
-            return playerData;
+            // const playerResponse = await fetch(`${baseUrl}/api/player`);
+            // const playerData = await playerResponse.json();
+            return loginData.data;
         } else {
             console.error(loginData.status);
             throw new Error(loginData.status);
@@ -51,7 +51,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             const { username, password } = parsedCredentials.data;
             const user = await getUser(username, password);
         if (!user) return null;
-           //user.password would be returned as hashed in practice
+           //user.password would be returned as hashed+salted in practice
            const hashedPassword = await bcrypt.hash(user.password, 10);
            const passwordsMatch = await bcrypt.compare(password, hashedPassword);
 

@@ -1,13 +1,14 @@
-import { auth } from "@/auth"
+async function getPlayer() {
+  const res = await import('../api/player/route')
+  const playerData = await (await res.GET()).json() 
+  return playerData.foundPlayer.username;
+}
 
-export default async function UserAvatar() {
-  const session = await auth()
- 
-  if (!session?.user) return null
- 
+const PlayerName = async () => {
+  let name = await getPlayer();
+
   return (
-    <div>
-      <a>{session.user.name}</a>
-    </div>
+    <a><b>{name}</b></a>
   )
 }
+export default PlayerName;

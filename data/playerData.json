@@ -1,4 +1,14 @@
 {
-  "username": "JohnnyBoi",
-  "password": "john123"
+  "players": [
+    {
+      "id": 1,
+      "username": "xbxcvxcv",
+      "password": "john123"
+    },
+    {
+      "id": 2,
+      "username": "billieboy",
+      "password": "bill123"
+    }
+  ]
 }

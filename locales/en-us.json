@@ -17,6 +17,7 @@
     "login-page-title": "Login page",
     "login-page-description": "A simple login app with Next.js",
     "profile": "Profile",
-    "Not authenticated": "Not authenticated"
+    "Not authenticated": "Not authenticated",
+    "playerNameChangeText": "Change your username here"
   }
 }

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import LanguageSwitcher from "./LanguageSwitcherComponent";
 import styles from "../[locale]/page.module.css";
@@ -7,13 +7,16 @@ import { useState } from "react";
 import { Locale } from "../../../i18n.config";
 import { useAuth } from "../contexts/authcontext";
 import { signOut } from "next-auth/react"
-import { useSession } from "next-auth/react";
+import { Session } from 'next-auth';
+import { User } from "../lib/definitions";
 
+interface HeaderProps {
+    session: Session | null;
+  }
 
-export default function Header() {
+export default function Header({session}: HeaderProps) {
     const t = useTranslations("common");
     const locale = useLocale() as Locale;
-    const { data: session } = useSession();
     return (
             <header className={styles.header}>
                 <nav>

@@ -17,7 +17,7 @@ export default function LoginForm() {
     <form action={formAction}>
       {errorMessage && <p>{t('error', {error: errorMessage})}</p>}
       <input id="callbackUrl" type="hidden" name="callbackUrl" value={`${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/profile`} />
-      <input id="redircTo" type="hidden" name="redirectTo" value={`${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/profile`} />
+      <input id="redirectTo" type="hidden" name="redirectTo" value={`${process.env.NEXT_PUBLIC_BASE_URL}/${locale}/profile`} />
       <input
         id="username"
         type="username"

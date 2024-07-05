@@ -3,27 +3,28 @@ import { Inter } from 'next/font/google';
 import Header from '../components/header';
 import { getLocale, getMessages } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
-import { SessionProvider, useSession } from 'next-auth/react';
+import { SessionProvider, getSession, useSession } from 'next-auth/react';
 import { AuthProvider } from '../contexts/authcontext';
 import { Session } from 'next-auth';
+import { auth } from '@/auth';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default async function LocaleLayout({
   children,
-  params: { locale, 
-    session },
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
   params: { locale: string, session: Session };
 }>) {
   const messages = await getMessages();
+  const session = await auth();
   return (
     <html lang={locale}>
       <body className={inter.className}>
         <SessionProvider session={session}>
           <NextIntlClientProvider messages={messages}>
-            <Header />
+             <Header session={session}/>
             {children}
           </NextIntlClientProvider>
         </SessionProvider>

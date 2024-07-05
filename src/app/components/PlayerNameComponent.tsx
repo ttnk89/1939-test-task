@@ -1,15 +1,12 @@
+'use client'
 import { useState } from 'react';
 import useTranslation from 'next-translate/useTranslation';
+import { useTranslations } from 'next-intl';
 
-interface PlayerNameProps {
-  playerName: string;
-  onChangePlayerName: (newName: string) => void;
-}
-
-export default function PlayerName({ playerName, onChangePlayerName }: PlayerNameProps) {
-  const [newName, setNewName] = useState(playerName);
+export default function PlayerNameChange() {
+  const [newPlayerName, setNewPlayerName] = useState('');
   const [error, setError] = useState('');
-  const { t } = useTranslation('common');
+  const t = useTranslations('common');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,7 +17,7 @@ export default function PlayerName({ playerName, onChangePlayerName }: PlayerNam
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ newName }),
+        body: JSON.stringify({ username: newPlayerName, id: 1 }),
       });
 
       if (!response.ok) {
@@ -31,22 +28,22 @@ export default function PlayerName({ playerName, onChangePlayerName }: PlayerNam
 
       const data = await response.json();
       if (data.status === 'name_change_ok') {
-        onChangePlayerName(data.playerName);
+        setNewPlayerName(data.playerName);
       } else {
         setError('Name change failed.');
       }
       } catch (err) {
-      setError('An error occurred. Please try again.');
+        setError('An error occurred.');
       }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {error && <p>{error}</p>}
+      {error && <p className='error'>{error}</p>}
       <label>
-        {t('playerName')}:
-        <input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} />
+        {t('playerNameChangeText')}:
       </label>
+      <input type="text" value={newPlayerName} onChange={(e) => setNewPlayerName(e.target.value)} />
       <button type="submit">{t('changePlayerName')}</button>
     </form>
   );

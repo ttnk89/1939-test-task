@@ -2,8 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { locales } from '../i18n.config';
 import { authConfig } from './auth.config';
-import { auth } from './auth';
 import { getToken } from 'next-auth/jwt';
+import NextAuth from 'next-auth';
+import { auth } from './auth';
 
 const publicPages = ['/', '/login'];
  
@@ -26,7 +27,7 @@ const authMiddleware = async (req: NextRequest) => {
   return NextResponse.next();
 };
  
-export default async function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
   const publicPathnameRegex = RegExp(
     `^(/(${locales.join('|')}))?(${publicPages
       .flatMap((p) => (p === '/' ? ['', '/'] : p))
@@ -34,15 +35,24 @@ export default async function middleware(req: NextRequest) {
     'i'
   );
   const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname);
- 
+  const session = await auth();
+  const isLoggedIn = !!session?.user;
   if (isPublicPage) {
-    return intlMiddleware(req);
-  } else {
-    const authResponse = await authMiddleware(req);
-    if (authResponse.redirected) {
-      return authResponse;
+    if (isLoggedIn && req.nextUrl.pathname.includes('/login')) {
+      return Response.redirect(new URL("/profile", req.nextUrl.origin));
+    } else {
+      return intlMiddleware(req);
     }
-    return intlMiddleware(req);
+  } else {
+    if (!isLoggedIn && req.nextUrl.pathname.includes('/profile')) {
+      return Response.redirect(new URL("/login", req.nextUrl.origin));
+    } else {
+      const authResponse = await authMiddleware(req);
+      if (authResponse.redirected) {
+        return authResponse;
+      }
+      return intlMiddleware(req);
+    }
   }
 }
  

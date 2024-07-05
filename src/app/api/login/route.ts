@@ -4,16 +4,19 @@ import path, { parse } from 'path';
  
 export async function POST(request: Request) {
   const { username, password } = await request.json();
+  //mock backend logic without a db etc.
   const playerFilePath = path.join(process.cwd(), 'data/playerData.json');
 
   const data = await fs.readFile(playerFilePath, 'utf8');
   const parsedData = JSON.parse(data);
 
-  if (username === parsedData.username && password === parsedData.password) {
-    return NextResponse.json({ status: 'login_ok' })
-  } else if (username !== parsedData.username) {
+  const foundPlayer = parsedData.players.find((player: { username: string, password: string }) => player.username === username);
+
+  if (foundPlayer.username === username && foundPlayer.password === password) {
+    return NextResponse.json({ status: 'login_ok', data: foundPlayer })
+  } else if (foundPlayer.username !== parsedData.username) {
     return NextResponse.json({ status: 'user_not_found' })
-  } else if (password !== parsedData.password) {
+  } else if (foundPlayer.password !== parsedData.password) {
     return NextResponse.json({ status: 'password_mismatch' })
   } else {
     return NextResponse.json({ status: 'login_failed' })
