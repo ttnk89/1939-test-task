@@ -46,11 +46,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ status: 'name_change_failed', message: 'nameTooLong' }, { status: 400 });
     }
 
-    //allow only alphanumeric
-    if (!/^[a-zA-Z0-9_]+$/.test(username)) {
-      return NextResponse.json({ status: 'name_change_failed', message: 'invalidCharacters' }, { status: 400 });
-    }
-
     // check for bad words
     if (badWords.some((word: string) => username.toLowerCase().includes(word))) {
       return NextResponse.json({ status: 'name_change_failed', message: 'inappropriateName' }, { status: 400 });
