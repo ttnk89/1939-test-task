@@ -4,7 +4,6 @@ import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
 import bcrypt from 'bcryptjs';
 import { User } from './app/lib/definitions';
-import { useTranslations } from 'next-intl';
  
 async function getUser(username: string, password: string): Promise<User | undefined> {
     try {
@@ -25,8 +24,6 @@ async function getUser(username: string, password: string): Promise<User | undef
         const loginData = await loginResponse.json();
 
         if (loginData.status === 'login_ok') {
-            // const playerResponse = await fetch(`${baseUrl}/api/player`);
-            // const playerData = await playerResponse.json();
             return loginData.data;
         } else {
             console.error(loginData.status);

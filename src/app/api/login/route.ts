@@ -10,11 +10,11 @@ export async function POST(request: Request) {
   const data = await fs.readFile(playerFilePath, 'utf8');
   const parsedData = JSON.parse(data);
 
-  const foundPlayer = parsedData.players.find((player: { username: string, password: string }) => player.username === username);
+  const foundPlayer = parsedData.players.find((player: { id: number, username: string, password: string }) => player.username === username);
 
   if (foundPlayer.username === username && foundPlayer.password === password) {
     return NextResponse.json({ status: 'login_ok', data: foundPlayer })
-  } else if (foundPlayer.username !== parsedData.username) {
+  } else if (!foundPlayer) {
     return NextResponse.json({ status: 'user_not_found' })
   } else if (foundPlayer.password !== parsedData.password) {
     return NextResponse.json({ status: 'password_mismatch' })

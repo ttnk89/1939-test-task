@@ -1,0 +1,39 @@
+{
+    "common": {
+      "welcome": "ようこそ",
+      "home": "ホーム",
+      "login": "ログイン",
+      "logout": "ログアウト",
+      "username": "ユーザー名",
+      "password": "パスワード",
+      "playerName": "プレイヤー名",
+      "changePlayerName": "プレイヤー名を変更",
+      "nameEntry": "新しいユーザー名を入力",
+      "submit": "送信",
+      "cancel": "キャンセル",
+      "confirmlogout": "アカウントからログアウトしますか？",
+      "login-page-title": "ログインアプリ",
+      "appDescription": "Next.jsのシンプルなログインアプリ",
+      "profile": "プロフィール",
+      "loggedIn": "ログイン中",
+      "loading": "読み込み中",
+      "playerNameChangeText": "ここでユーザー名を変更",
+      
+      "errorMessages": {
+        "loginFailed": "ログインに失敗しました。資格情報を確認してください。",
+        "inappropriateName": "不適切な名前のため、名前の変更に失敗しました。",
+        "genericError": "エラーが発生しました。",
+        "error": "{error}",
+        "notAuthenticated": "認証されていません",
+        "nameChangeSuccess": "名前が正常に変更されました。",
+        "playerNotFound": "プレイヤーデータの読み取りに失敗しました",
+        "playerNameFetchFailed": "プレイヤー名の取得に失敗しました：",
+        "invalidName": "無効な名前です。",
+        "nameTooLong": "ユーザー名は3〜20文字でなければなりません。",
+        "invalidCharacters": "ユーザー名に無効な文字が含まれています。",
+        "userExists": "ユーザー名は既に存在します。",
+        "nameChangeFailed": "名前の変更に失敗しました。"
+      }
+    }
+  }
+  

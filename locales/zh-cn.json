@@ -1,19 +1,38 @@
 {
   "common": {
     "welcome": "欢迎",
+    "home": "首页",
     "login": "登录",
-    "home": "ZH_Home",
+    "logout": "登出",
     "username": "用户名",
     "password": "密码",
-    "playerName": "玩家姓名",
-    "changePlayerName": "更改玩家姓名",
-    "language": "语言",
-    "loginFailed": "登录失败，请检查您的凭据。",
-    "nameChangeFailed": "由于名称不适当，名称更改失败。",
-    "genericError": "An error occurred. Please try again.",
+    "playerName": "玩家名",
+    "changePlayerName": "更改玩家名",
+    "nameEntry": "输入一个新的用户名",
     "submit": "提交",
-    "error": "{error}",
-    "login-page-title": "ZH_Login page",
-    "login-page-description": "ZH_A simple login app with Next.js"
+    "cancel": "取消",
+    "confirmlogout": "确定要登出您的帐户吗？",
+    "login-page-title": "登录应用",
+    "appDescription": "一个简单的 Next.js 登录应用",
+    "profile": "个人资料",
+    "loggedIn": "已登录为",
+    "loading": "加载中",
+    "playerNameChangeText": "在这里更改您的用户名",
+    
+    "errorMessages": {
+      "loginFailed": "登录失败，请检查您的凭据。",
+      "inappropriateName": "名称更改失败，名称不当。",
+      "genericError": "发生错误。",
+      "error": "{error}",
+      "notAuthenticated": "未认证",
+      "nameChangeSuccess": "名称成功更改。",
+      "playerNotFound": "读取玩家数据失败",
+      "playerNameFetchFailed": "获取玩家名称失败：",
+      "invalidName": "名称无效。",
+      "nameTooLong": "用户名必须在3到20个字符之间。",
+      "invalidCharacters": "用户名包含无效字符。",
+      "userExists": "用户名已存在。",
+      "nameChangeFailed": "更改名称失败。"
+    }
   }
 }

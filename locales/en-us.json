@@ -2,22 +2,37 @@
   "common": {
     "welcome": "Welcome",
     "home": "Home",
-    "login": "Login",
+    "login": "Log In",
     "logout": "Logout",
     "username": "Username",
     "password": "Password",
     "playerName": "Player Name",
     "changePlayerName": "Change Player Name",
-    "language": "Language",
-    "loginFailed": "Login failed, please check your credentials.",
-    "nameChangeFailed": "Name change failed due to inappropriate name.",
-    "genericError": "An error occurred. Please try again.",
+    "nameEntry": "Enter a new username",
     "submit": "Submit",
-    "error": "{error}",
-    "login-page-title": "Login page",
-    "login-page-description": "A simple login app with Next.js",
+    "cancel": "Cancel",
+    "confirmlogout": "Log out of your account?",
+    "login-page-title": "Login app",
+    "appDescription": "A simple login app with Next.js",
     "profile": "Profile",
-    "Not authenticated": "Not authenticated",
-    "playerNameChangeText": "Change your username here"
+    "loggedIn": "Logged in as",
+    "loading": "Loading",
+    "playerNameChangeText": "Change your username here",
+    
+    "errorMessages": {
+      "loginFailed": "Login failed, please check your credentials.",
+      "inappropriateName": "Name change failed due to inappropriate name.",
+      "genericError": "An error occurred.",
+      "error": "{error}",
+      "notAuthenticated": "Not authenticated",
+      "nameChangeSuccess": "Name successfully changed.",
+      "playerNotFound": "Failed to read player data",
+      "playerNameFetchFailed": "Failed to fetch player name: ",
+      "invalidName": "Invalid name.",
+      "nameTooLong": "Username must be between 3 and 20 characters.",
+      "invalidCharacters": "Username contains invalid characters.",
+      "userExists": "Username already exists.",
+      "nameChangeFailed": "Failed to change name."
+    }
   }
 }

@@ -3,12 +3,9 @@
 import LanguageSwitcher from "./LanguageSwitcherComponent";
 import styles from "../[locale]/page.module.css";
 import { useLocale, useTranslations } from "next-intl";
-import { useState } from "react";
 import { Locale } from "../../../i18n.config";
-import { useAuth } from "../contexts/authcontext";
 import { signOut } from "next-auth/react"
 import { Session } from 'next-auth';
-import { User } from "../lib/definitions";
 
 interface HeaderProps {
     session: Session | null;
@@ -17,6 +14,13 @@ interface HeaderProps {
 export default function Header({session}: HeaderProps) {
     const t = useTranslations("common");
     const locale = useLocale() as Locale;
+
+    const handleLogout = () => {
+        if (window.confirm(t('confirmlogout'))) {
+            signOut();
+        }
+    };
+
     return (
             <header className={styles.header}>
                 <nav>
@@ -33,7 +37,7 @@ export default function Header({session}: HeaderProps) {
                             {!session ? (
                                 <a href="/login">{t('login')}</a>
                             ) : (
-                                   <button className={styles.button} onClick={() => signOut()}><u>
+                                   <button className={styles.button} onClick={handleLogout}><u>
                                     {t('logout')}</u></button>
                             )}
                         </li>

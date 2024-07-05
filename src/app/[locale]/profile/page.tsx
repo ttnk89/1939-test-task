@@ -1,25 +1,50 @@
+'use client'
 import styles from "../page.module.css";
-import useTranslation from "next-translate/useTranslation";
-import getT from "next-translate/getT"
 import { useEffect, useState } from "react";
-import LoginForm from "../../components/login";
-import { Metadata, ResolvingMetadata } from "next";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/app/contexts/authcontext";
-import PlayerName from "@/app/components/playername";
-import { auth } from "@/auth";
-import { getSession } from "next-auth/react";
 import PlayerNameChange from "@/app/components/PlayerNameComponent";
 
 export default function Page() {
     const t = useTranslations('common');
+    const [playerName, setPlayerName] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchPlayerName = async () => {
+            try {
+                const response = await fetch('/api/player');
+                if (response.ok) {
+                    const data = await response.json();
+                    setPlayerName(data.foundPlayer.username);
+                }
+            } catch (err) {
+                console.error(t('playerNameFetchFailed'), err);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchPlayerName();
+    });
+
+    const handlePlayerNameChange = (newName: string) => {
+        setPlayerName(newName);
+    };
+
+    if (isLoading) {
+        return (
+            <main className={styles.main}>
+                <p className={styles.loading}>{t('loading')}...</p>
+            </main>
+        );
+    }
+
     return (
         <main className={styles.main}>
             <p>
-                hello, <PlayerName />
+                {t('loggedIn')} <b>{playerName}</b>
             </p>
-            <PlayerNameChange />
+            <PlayerNameChange onPlayerNameChange={handlePlayerNameChange}/>
         </main>
     );
 }

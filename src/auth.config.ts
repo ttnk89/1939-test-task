@@ -1,6 +1,4 @@
 import type { NextAuthConfig } from 'next-auth';
-import { Locale } from '../i18n.config';
-import { useLocale } from 'next-intl';
  
 export const authConfig = {
     pages: {
@@ -12,12 +10,14 @@ export const authConfig = {
           const isOnProfilePage = nextUrl.pathname.includes('/profile');
           if (isOnProfilePage) {
             if (isLoggedIn) return true;
-            return false; // Redirect unauthenticated users to login page
+
+            // redirect unauthenticated users to login page
+            return false; 
           } else if (isLoggedIn) {
             return Response.redirect(new URL(`/profile`, nextUrl));
           }
           return true;
         },
       },
-      providers: [], // Add providers with an empty array for now
+      providers: [],
 } satisfies NextAuthConfig;

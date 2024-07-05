@@ -2,9 +2,6 @@
 
 import { AuthError } from 'next-auth';
 import { signIn } from '../../auth';
-import { RedirectType } from 'next/navigation';
- 
-// ...
  
 export async function authenticate(
   prevState: string | undefined,

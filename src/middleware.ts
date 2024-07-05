@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { locales } from '../i18n.config';
-import { authConfig } from './auth.config';
 import { getToken } from 'next-auth/jwt';
-import NextAuth from 'next-auth';
 import { auth } from './auth';
 
 const publicPages = ['/', '/login'];
@@ -18,7 +16,8 @@ const authMiddleware = async (req: NextRequest) => {
   if (!secret) {
     throw new Error('AUTH_SECRET environment variable is not defined');
   }
-  const token = await getToken({ req, secret: secret, salt: "authjs.session-token" }); // "__Secure-authjs.session-token" in production
+  // "__Secure-authjs.session-token" in production
+  const token = await getToken({ req, secret: secret, salt: "authjs.session-token" });
   if (!token && req.nextUrl.pathname !== "/login") {
     const newUrl = new URL("/login", req.nextUrl.origin);
     return NextResponse.redirect(newUrl);

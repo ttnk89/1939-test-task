@@ -1,5 +1,4 @@
 import styles from "./page.module.css";
-import PlayerName from '../components/playername';
 import { useTranslations } from "next-intl";
 import { Session } from "next-auth";
 interface HomeProps {
